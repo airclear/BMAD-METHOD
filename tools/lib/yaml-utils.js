@@ -9,8 +9,17 @@
  * @returns {string|null} - The extracted YAML content or null if not found
  */
 function extractYamlFromAgent(agentContent, cleanCommands = false) {
-  // Remove carriage returns and match YAML block
-  const yamlMatch = agentContent.replaceAll('\r', '').match(/```ya?ml\n([\s\S]*?)\n```/);
+  // Remove carriage returns
+  const cleanContent = agentContent.replaceAll('\r', '');
+
+  // First try to match YAML code block format
+  let yamlMatch = cleanContent.match(/```ya?ml\n([\s\S]*?)\n```/);
+
+  // If no code block found, try YAML front matter format
+  if (!yamlMatch) {
+    yamlMatch = cleanContent.match(/^---\n([\s\S]*?)\n---/);
+  }
+
   if (!yamlMatch) return null;
 
   let yamlContent = yamlMatch[1].trim();

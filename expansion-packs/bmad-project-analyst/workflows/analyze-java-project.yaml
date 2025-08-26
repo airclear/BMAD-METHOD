@@ -1,0 +1,6 @@
+name: Analyze Java Project Workflow
+description: A workflow to analyze a Java web project and generate an AI guideline.
+steps:
+  - agent: project-analyst
+    task: analyze-java-project
+    template: ai-guideline-template

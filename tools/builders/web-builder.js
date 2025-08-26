@@ -406,39 +406,59 @@ These references map directly to bundle sections:
                 let found = false;
 
                 // Try expansion pack first
-                const resourcePath = path.join(packDir, resourceType, resourceName);
-                try {
-                  const resourceContent = await fs.readFile(resourcePath, 'utf8');
-                  const resourceWebPath = this.convertToWebPath(resourcePath, packName);
-                  sections.push(this.formatSection(resourceWebPath, resourceContent, packName));
-                  found = true;
-                } catch {
-                  // Not in expansion pack, continue
+                const possibleExtensions = ['.md', '.yaml', ''];
+                for (const ext of possibleExtensions) {
+                  const resourcePath = path.join(packDir, resourceType, resourceName + ext);
+                  try {
+                    const resourceContent = await fs.readFile(resourcePath, 'utf8');
+                    const resourceWebPath = this.convertToWebPath(resourcePath, packName);
+                    sections.push(this.formatSection(resourceWebPath, resourceContent, packName));
+                    found = true;
+                    break;
+                  } catch {
+                    // Try next extension
+                  }
                 }
 
                 // If not found in expansion pack, try core
                 if (!found) {
-                  const corePath = path.join(this.rootDir, 'bmad-core', resourceType, resourceName);
-                  try {
-                    const coreContent = await fs.readFile(corePath, 'utf8');
-                    const coreWebPath = this.convertToWebPath(corePath, packName);
-                    sections.push(this.formatSection(coreWebPath, coreContent, packName));
-                    found = true;
-                  } catch {
-                    // Not in core either, continue
+                  for (const ext of possibleExtensions) {
+                    const corePath = path.join(
+                      this.rootDir,
+                      'bmad-core',
+                      resourceType,
+                      resourceName + ext,
+                    );
+                    try {
+                      const coreContent = await fs.readFile(corePath, 'utf8');
+                      const coreWebPath = this.convertToWebPath(corePath, packName);
+                      sections.push(this.formatSection(coreWebPath, coreContent, packName));
+                      found = true;
+                      break;
+                    } catch {
+                      // Try next extension
+                    }
                   }
                 }
 
                 // If not found in core, try common folder
                 if (!found) {
-                  const commonPath = path.join(this.rootDir, 'common', resourceType, resourceName);
-                  try {
-                    const commonContent = await fs.readFile(commonPath, 'utf8');
-                    const commonWebPath = this.convertToWebPath(commonPath, packName);
-                    sections.push(this.formatSection(commonWebPath, commonContent, packName));
-                    found = true;
-                  } catch {
-                    // Not in common either, continue
+                  for (const ext of possibleExtensions) {
+                    const commonPath = path.join(
+                      this.rootDir,
+                      'common',
+                      resourceType,
+                      resourceName + ext,
+                    );
+                    try {
+                      const commonContent = await fs.readFile(commonPath, 'utf8');
+                      const commonWebPath = this.convertToWebPath(commonPath, packName);
+                      sections.push(this.formatSection(commonWebPath, commonContent, packName));
+                      found = true;
+                      break;
+                    } catch {
+                      // Try next extension
+                    }
                   }
                 }
 

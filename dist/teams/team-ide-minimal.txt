@@ -410,6 +410,7 @@ dependencies:
 
 ==================== START: .bmad-core/tasks/advanced-elicitation.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Advanced Elicitation Task
 
 ## Purpose
@@ -531,6 +532,7 @@ Choose a number (0-8) or 9 to proceed:
 
 ==================== START: .bmad-core/tasks/create-doc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Document from Template (YAML Driven)
 
 ## ⚠️ CRITICAL EXECUTION NOTICE ⚠️
@@ -636,6 +638,7 @@ User can type `#yolo` to toggle to YOLO mode (process all sections at once).
 
 ==================== START: .bmad-core/tasks/kb-mode-interaction.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # KB Mode Interaction Task
 
 ## Purpose
@@ -715,6 +718,7 @@ Or ask me about anything else related to BMad-Method!
 
 ==================== START: .bmad-core/data/bmad-kb.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # BMAD™ Knowledge Base
 
 ## Overview
@@ -1525,6 +1529,7 @@ Use the **expansion-creator** pack to build your own:
 
 ==================== START: .bmad-core/data/elicitation-methods.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Elicitation Methods Data
 
 ## Core Reflective Methods
@@ -1683,6 +1688,7 @@ Use the **expansion-creator** pack to build your own:
 
 ==================== START: .bmad-core/utils/workflow-management.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Workflow Management
 
 Enables BMad orchestrator to manage and execute team workflows.
@@ -1756,6 +1762,7 @@ Agents should be workflow-aware: know active workflow, their role, access artifa
 
 ==================== START: .bmad-core/tasks/correct-course.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Correct Course Task
 
 ## Purpose
@@ -1830,6 +1837,7 @@ Agents should be workflow-aware: know active workflow, their role, access artifa
 
 ==================== START: .bmad-core/tasks/execute-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Checklist Validation Task
 
 This task provides instructions for validating documentation against checklists. The agent MUST follow these instructions to ensure thorough and systematic validation of documents.
@@ -1920,6 +1928,7 @@ The LLM will:
 
 ==================== START: .bmad-core/tasks/shard-doc.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Document Sharding Task
 
 ## Purpose
@@ -2109,6 +2118,7 @@ Document sharded successfully:
 
 ==================== START: .bmad-core/tasks/validate-next-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Validate Next Story Task
 
 ## Purpose
@@ -2388,6 +2398,7 @@ sections:
 
 ==================== START: .bmad-core/checklists/change-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Change Navigation Checklist
 
 **Purpose:** To systematically guide the selected Agent and user through the analysis and planning required when a significant change (pivot, tech issue, missing requirement, failed story) is identified during the BMad workflow.
@@ -2574,6 +2585,7 @@ Keep it action-oriented and forward-looking.]]
 
 ==================== START: .bmad-core/checklists/po-master-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Product Owner (PO) Master Validation Checklist
 
 This checklist serves as a comprehensive framework for the Product Owner to validate project plans before development execution. It adapts intelligently based on project type (greenfield vs brownfield) and includes UI/UX considerations when applicable.
@@ -3010,6 +3022,7 @@ After presenting the report, ask if the user wants:
 
 ==================== START: .bmad-core/tasks/create-next-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Create Next Story Task
 
 ## Purpose
@@ -3126,6 +3139,7 @@ ALWAYS cite source documents: `[Source: architecture/{filename}.md#{section}]`
 
 ==================== START: .bmad-core/checklists/story-draft-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Story Draft Checklist
 
 The Scrum Master should use this checklist to validate that each story contains sufficient context for a developer agent to implement it successfully, while assuming the dev agent has reasonable capabilities to figure things out.
@@ -3283,6 +3297,7 @@ Be pragmatic - perfect documentation doesn't exist, but it must be enough to pro
 
 ==================== START: .bmad-core/tasks/apply-qa-fixes.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # apply-qa-fixes
 
 Implement fixes based on QA results (gate and assessments) for a specific story. This task is for the Dev agent to systematically consume QA outputs and apply code/test changes while only updating allowed sections in the story file.
@@ -3435,6 +3450,7 @@ Fix plan:
 
 ==================== START: .bmad-core/checklists/story-dod-checklist.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # Story Definition of Done (DoD) Checklist
 
 ## Instructions for Developer Agent
@@ -3533,6 +3549,7 @@ Be honest - it's better to flag issues now than have them discovered later.]]
 
 ==================== START: .bmad-core/tasks/nfr-assess.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # nfr-assess
 
 Quick NFR validation focused on the core four: security, performance, reliability, maintainability.
@@ -3880,6 +3897,7 @@ performance_deep_dive:
 
 ==================== START: .bmad-core/tasks/qa-gate.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # qa-gate
 
 Create or update a quality gate decision file for a story based on review findings.
@@ -4045,6 +4063,7 @@ Gate: CONCERNS → qa.qaLocation/gates/{epic}.{story}-{slug}.yml
 
 ==================== START: .bmad-core/tasks/review-story.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # review-story
 
 Perform a comprehensive test architecture review with quality gate decision. This adaptive, risk-aware review creates both a story update and a detailed gate file.
@@ -4363,6 +4382,7 @@ After review:
 
 ==================== START: .bmad-core/tasks/risk-profile.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # risk-profile
 
 Generate a comprehensive risk assessment matrix for a story implementation using probability × impact analysis.
@@ -4720,6 +4740,7 @@ Risk profile: qa.qaLocation/assessments/{epic}.{story}-risk-{YYYYMMDD}.md
 
 ==================== START: .bmad-core/tasks/test-design.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # test-design
 
 Create comprehensive test scenarios with appropriate test level recommendations for story implementation.
@@ -4898,6 +4919,7 @@ Before finalizing, verify:
 
 ==================== START: .bmad-core/tasks/trace-requirements.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # trace-requirements
 
 Map story requirements to test cases using Given-When-Then patterns for comprehensive traceability.
@@ -5272,6 +5294,7 @@ optional_fields_examples:
 
 ==================== START: .bmad-core/data/technical-preferences.md ====================
 <!-- Powered by BMAD™ Core -->
+
 # User-Defined Preferred Patterns and Preferences
 
 None Listed
