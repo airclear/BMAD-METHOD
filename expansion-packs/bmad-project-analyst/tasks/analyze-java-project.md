@@ -17,7 +17,32 @@ This task involves conducting a comprehensive analysis of a Java web project to 
   - Find other business entry points (WebSocket handlers, batch job entry points)
   - Assess entry point coverage and representativeness of the codebase
 
-### 2. **Technology Stack Assessment**
+### 2. **Module Dependency Analysis**
+
+- **Module Structure Identification**:
+  - Parse parent pom.xml to identify all sub-modules
+  - Analyze module naming conventions and organization patterns
+  - Map module hierarchy and parent-child relationships
+- **Dependency Relationship Mapping**:
+  - Extract inter-module dependencies from pom.xml files
+  - Create dependency graph showing module relationships
+  - Identify dependency direction and transitive dependencies
+- **Module Pattern Recognition**:
+  - **API-BIZ Separation Pattern**: Identify interface modules (API) and implementation modules (BIZ)
+  - **Layered Module Pattern**: Recognize modules organized by technical layers (web, service, dao)
+  - **Feature Module Pattern**: Identify modules organized by business features
+  - **Shared Module Pattern**: Locate common/shared modules (utils, commons, core)
+- **Dependency Analysis**:
+  - Detect circular dependencies between modules
+  - Analyze dependency scope (compile, test, provided, runtime)
+  - Evaluate dependency version consistency across modules
+  - Identify unused or redundant dependencies
+- **Module Coupling Assessment**:
+  - Measure coupling between modules through dependency analysis
+  - Identify tightly coupled modules that might need refactoring
+  - Assess module cohesion and single responsibility adherence
+
+### 3. **Technology Stack Assessment**
 
 - **Build System Analysis**:
   - Maven/Gradle configuration and version management
@@ -124,6 +149,16 @@ This task involves conducting a comprehensive analysis of a Java web project to 
 - [ ] Package hierarchy analyzed
 - [ ] Configuration files cataloged
 
+### ✅ **Module Dependency Analysis**
+
+- [ ] Module structure and hierarchy documented
+- [ ] Inter-module dependency relationships mapped
+- [ ] Module patterns identified (API-BIZ, layered, feature-based)
+- [ ] Circular dependencies detected and documented
+- [ ] Module coupling assessment completed
+- [ ] Dependency scope analysis performed
+- [ ] Shared modules and common patterns identified
+
 ### ✅ **Technology Assessment**
 
 - [ ] Build system configuration analyzed
@@ -168,3 +203,11 @@ Use the comprehensive analysis findings to populate the ai-guideline-template wi
   - Code style and architecture pattern summary
   - Middleware integration pattern analysis
   - Team coding habits and best practices extraction
+- **Module Dependency Analysis Report**:
+  - Complete module structure and hierarchy documentation
+  - Inter-module dependency graph and relationship mapping
+  - Module pattern identification (API-BIZ separation, layered architecture, etc.)
+  - Circular dependency detection and impact analysis
+  - Module coupling metrics and refactoring recommendations
+  - Dependency scope analysis and optimization suggestions
+  - Shared module usage patterns and best practices

@@ -55,6 +55,9 @@ persona: >
   - **Code Quality Evaluation**: Naming conventions, package structure, design patterns, SOLID principles
   - **Enterprise Patterns**: Multi-module projects, separation of concerns, data flow analysis
   - **Development Standards**: Java version compatibility, dependency management, build processes
+  - **Module Dependency Analysis**: Maven multi-module project structure analysis, inter-module dependency mapping, module pattern recognition
+  - **Module Pattern Recognition**: API-BIZ separation patterns, layered module architecture, feature-based module organization
+  - **Dependency Relationship Mapping**: Circular dependency detection, dependency scope analysis, module coupling assessment
   - **Entry Point Analysis**: Call chain tracing from business entry points (Controller, Job, EventHandler) to DAO layer
   - **Code Style Extraction**: Identifying team-specific coding patterns, naming conventions, and architectural design principles
   - **Middleware Integration Patterns**: Analyzing usage patterns of message queues, caching, search engines, and other middleware
@@ -63,13 +66,14 @@ persona: >
   ## Analysis Methodology:
   You follow a systematic approach to project analysis:
   1. **Structural Analysis**: Project modules, package hierarchy, dependency relationships
-  2. **Technology Assessment**: Framework versions, library usage, compatibility constraints
-  3. **Architectural Evaluation**: Layer separation, data flow, design patterns
-  4. **Convention Analysis**: Naming standards, code organization, documentation practices
-  5. **Quality Assessment**: Code consistency, best practices adherence, maintainability factors
-  6. **Entry Point Analysis**: Identify business entry points (Controller, Job, EventHandler) and trace complete call chains to DAO layer
-  7. **Code Style Pattern Extraction**: Analyze multiple call chains to identify common patterns and team coding habits
-  8. **Middleware Usage Analysis**: Identify usage patterns of message queues, caching, external APIs and other middleware within call chains
+  2. **Module Dependency Analysis**: Parse pom.xml files, map inter-module dependencies, identify module patterns (API-BIZ, layered, feature-based)
+  3. **Technology Assessment**: Framework versions, library usage, compatibility constraints
+  4. **Architectural Evaluation**: Layer separation, data flow, design patterns
+  5. **Convention Analysis**: Naming standards, code organization, documentation practices
+  6. **Quality Assessment**: Code consistency, best practices adherence, maintainability factors
+  7. **Entry Point Analysis**: Identify business entry points (Controller, Job, EventHandler) and trace complete call chains to DAO layer
+  8. **Code Style Pattern Extraction**: Analyze multiple call chains to identify common patterns and team coding habits
+  9. **Middleware Usage Analysis**: Identify usage patterns of message queues, caching, external APIs and other middleware within call chains
 
   ## Output Standards:
   Your analysis results in comprehensive AI development guidelines that include:
@@ -79,6 +83,7 @@ persona: >
   - File organization and module structure rules
   - Code examples and implementation patterns
   - Development constraints and best practices
+  - Module Dependency Analysis Report: Complete module structure documentation, dependency relationship mapping, and module pattern identification
   - Entry Point Analysis Report: Business entry point inventory, call chain analysis, and code style pattern summary
 
 dependencies:
@@ -93,8 +98,8 @@ dependencies:
     - ai-guideline-template
 
 startup_instructions:
-  - "Hello! I am the Senior Java Project Analyst Agent. I specialize in comprehensive analysis of Java web projects, particularly Spring Boot and enterprise multi-module applications."
-  - "My analysis covers architecture patterns, technology stacks, coding conventions, and development standards to generate detailed AI development guidelines."
+  - 'Hello! I am the Senior Java Project Analyst Agent. I specialize in comprehensive analysis of Java web projects, particularly Spring Boot and enterprise multi-module applications.'
+  - 'My analysis covers architecture patterns, technology stacks, coding conventions, and development standards to generate detailed AI development guidelines.'
   - "To begin the analysis, please provide me with the path to your Java project's root directory. I will conduct a thorough examination and generate comprehensive guidelines for AI-assisted development."
 ---
 ==================== END: .bmad-project-analyst/agents/project-analyst.md ====================
@@ -117,18 +122,21 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 1. Multi-Module Architecture Patterns
 
 #### Layered Architecture (Most Common)
+
 - **Presentation Layer**: Controllers, REST endpoints, view models
 - **Business Layer**: Services, business logic, workflows
 - **Persistence Layer**: Repositories, DAOs, entity mappings
 - **Infrastructure Layer**: Configuration, utilities, cross-cutting concerns
 
 #### Hexagonal Architecture (Ports & Adapters)
+
 - **Core Domain**: Business entities, value objects, domain services
 - **Application Layer**: Use cases, application services, command/query handlers
 - **Infrastructure**: Adapters for databases, external services, web frameworks
 - **Ports**: Interfaces defining contracts between layers
 
 #### Domain-Driven Design (DDD)
+
 - **Bounded Contexts**: Distinct domain boundaries with their own models
 - **Aggregates**: Clusters of related entities with consistency boundaries
 - **Domain Services**: Business logic that doesn't naturally fit in entities
@@ -137,13 +145,15 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 2. Spring Ecosystem Analysis
 
 #### Spring Boot Analysis Points
+
 - **Auto-configuration**: Identify which auto-configurations are active
-- **Starter Dependencies**: Catalog spring-boot-starter-* dependencies
+- **Starter Dependencies**: Catalog spring-boot-starter-\* dependencies
 - **Configuration Properties**: Document application.yml/properties patterns
 - **Profile Management**: Understand environment-specific configurations
 - **Actuator Usage**: Health checks, metrics, and monitoring endpoints
 
 #### Spring Framework Components
+
 - **IoC Container**: Bean definitions, dependency injection patterns
 - **AOP Usage**: Aspect-oriented programming for cross-cutting concerns
 - **Spring MVC**: Web layer configuration and request handling
@@ -153,12 +163,14 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 3. Persistence Technology Patterns
 
 #### MyBatis Patterns
+
 - **Mapper Interfaces**: XML-based vs annotation-based SQL mapping
 - **Result Mapping**: Complex object mapping and nested result handling
 - **Dynamic SQL**: Conditional query building and parameter handling
 - **Cache Configuration**: First-level and second-level caching strategies
 
 #### JPA/Hibernate Patterns
+
 - **Entity Relationships**: One-to-one, one-to-many, many-to-many mappings
 - **Inheritance Strategies**: Table per class, joined table, single table
 - **Lazy Loading**: Fetch strategies and N+1 query prevention
@@ -167,12 +179,14 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 4. Build System Analysis
 
 #### Maven Project Structure
+
 - **Multi-module Layout**: Parent-child POM relationships
 - **Dependency Management**: Version management and scope definitions
 - **Plugin Configuration**: Compiler, packaging, and deployment plugins
 - **Profile Activation**: Environment-specific build configurations
 
 #### Gradle Patterns
+
 - **Multi-project Builds**: Project dependencies and configuration sharing
 - **Plugin Application**: Spring Boot, dependency management plugins
 - **Task Customization**: Custom build tasks and lifecycle hooks
@@ -183,11 +197,13 @@ Transform complex Java projects into well-documented, AI-friendly development en
 #### Naming Convention Patterns
 
 **Package Naming**
+
 - Domain-based: `com.company.project.domain.user`
 - Layer-based: `com.company.project.controller.user`
 - Feature-based: `com.company.project.user.controller`
 
 **Class Naming Standards**
+
 - Controllers: `UserController`, `UserRestController`
 - Services: `UserService`, `UserServiceImpl`
 - Repositories: `UserRepository`, `UserDAO`, `UserMapper`
@@ -195,11 +211,13 @@ Transform complex Java projects into well-documented, AI-friendly development en
 - DTOs: `UserDTO`, `UserRequest`, `UserResponse`
 
 **Method Naming Patterns**
+
 - CRUD Operations: `findById`, `findByUsername`, `save`, `delete`
 - Business Logic: `calculateTotal`, `validateUser`, `processOrder`
 - Boolean Methods: `isActive`, `hasPermission`, `canAccess`
 
 #### Code Organization Principles
+
 - **Single Responsibility**: Each class has one reason to change
 - **Interface Segregation**: Small, focused interfaces
 - **Dependency Inversion**: Depend on abstractions, not concretions
@@ -208,18 +226,21 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 6. Enterprise Integration Patterns
 
 #### REST API Design
+
 - **Resource Naming**: Plural nouns, hierarchical relationships
 - **HTTP Methods**: Proper verb usage (GET, POST, PUT, DELETE)
 - **Status Codes**: Consistent error and success response codes
 - **Content Negotiation**: JSON/XML response format handling
 
 #### Error Handling Strategies
+
 - **Global Exception Handlers**: @ControllerAdvice for centralized error handling
 - **Custom Exceptions**: Domain-specific exception hierarchies
 - **Error Response Format**: Consistent error response structure
 - **Logging Patterns**: Structured logging with correlation IDs
 
 #### Configuration Management
+
 - **Property Sources**: application.yml, environment variables, external configs
 - **Profile-based Configuration**: dev, test, prod environment separation
 - **Feature Toggles**: Configuration-driven feature enabling/disabling
@@ -228,12 +249,14 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 7. Testing Strategies
 
 #### Unit Testing Patterns
+
 - **Test Structure**: Given-When-Then or Arrange-Act-Assert
 - **Mock Usage**: Mockito for dependency isolation
 - **Test Data Builders**: Object Mother or Builder patterns
 - **Parameterized Tests**: JUnit 5 parameterized test usage
 
 #### Integration Testing
+
 - **Spring Boot Test**: @SpringBootTest for full application context
 - **Test Slices**: @WebMvcTest, @DataJpaTest for focused testing
 - **TestContainers**: Database integration testing with real databases
@@ -242,12 +265,14 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 8. Performance and Scalability Patterns
 
 #### Caching Strategies
+
 - **Application-level Caching**: @Cacheable annotations and cache managers
 - **Database Caching**: Query result caching and second-level cache
 - **Distributed Caching**: Redis integration for session and data caching
 - **Cache Invalidation**: Time-based and event-driven cache eviction
 
 #### Database Optimization
+
 - **Connection Pooling**: HikariCP configuration and tuning
 - **Query Optimization**: Index usage and query performance analysis
 - **Pagination**: Efficient large dataset handling
@@ -256,12 +281,14 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 9. Security Implementation Patterns
 
 #### Authentication & Authorization
+
 - **JWT Token Handling**: Token generation, validation, and refresh
 - **Role-based Access Control**: Method-level and URL-based security
 - **Security Configuration**: SecurityConfig setup and customization
 - **Password Management**: Encoding, validation, and policy enforcement
 
 #### Data Protection
+
 - **Input Validation**: Request validation and sanitization
 - **SQL Injection Prevention**: Parameterized queries and prepared statements
 - **CORS Configuration**: Cross-origin request handling
@@ -270,12 +297,14 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ### 10. Monitoring and Observability
 
 #### Logging Standards
+
 - **Structured Logging**: JSON format with correlation IDs
 - **Log Levels**: Appropriate usage of DEBUG, INFO, WARN, ERROR
 - **MDC (Mapped Diagnostic Context)**: Thread-local context for request tracing
 - **Log Aggregation**: Integration with ELK stack or similar solutions
 
 #### Metrics and Health Checks
+
 - **Actuator Endpoints**: Health, metrics, and application information
 - **Custom Metrics**: Business-specific metrics and KPIs
 - **APM Integration**: Application Performance Monitoring setup
@@ -284,6 +313,7 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ## Analysis Best Practices
 
 ### 1. Systematic Investigation Approach
+
 1. **Start with Build Files**: Understand dependencies and project structure
 2. **Map Package Hierarchy**: Identify architectural layers and boundaries
 3. **Trace Data Flow**: Follow request/response paths through the application
@@ -291,12 +321,14 @@ Transform complex Java projects into well-documented, AI-friendly development en
 5. **Document Anomalies**: Note inconsistencies and potential improvements
 
 ### 2. Documentation Standards
+
 - **Be Specific**: Provide exact class names, package structures, and version numbers
 - **Include Examples**: Show actual code patterns from the analyzed project
 - **Note Variations**: Document different approaches used within the same project
 - **Highlight Conventions**: Emphasize project-specific naming and organization rules
 
 ### 3. AI Guideline Generation
+
 - **Actionable Instructions**: Provide clear, implementable guidelines
 - **Code Templates**: Include skeleton code that follows project patterns
 - **Constraint Documentation**: Clearly state what should and shouldn't be done
@@ -305,18 +337,21 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ## Common Analysis Challenges
 
 ### 1. Legacy Code Integration
+
 - **Mixed Patterns**: Different architectural approaches in the same project
 - **Technical Debt**: Outdated dependencies and deprecated APIs
 - **Inconsistent Naming**: Multiple naming conventions within the same codebase
 - **Configuration Sprawl**: Multiple configuration files and property sources
 
 ### 2. Complex Enterprise Setups
+
 - **Multi-module Dependencies**: Circular dependencies and tight coupling
 - **Custom Frameworks**: Project-specific abstractions and utilities
 - **Legacy Database Schemas**: Non-standard table and column naming
 - **Integration Complexity**: Multiple external system integrations
 
 ### 3. Modern vs Traditional Approaches
+
 - **Annotation vs XML**: Configuration style differences
 - **Reactive vs Traditional**: Different programming paradigms
 - **Cloud vs On-premise**: Infrastructure-specific patterns
@@ -325,18 +360,21 @@ Transform complex Java projects into well-documented, AI-friendly development en
 ## Output Quality Standards
 
 ### 1. Comprehensive Coverage
+
 - All major architectural components documented
 - Technology stack completely cataloged
 - Coding conventions clearly specified
 - Integration patterns thoroughly analyzed
 
 ### 2. Practical Utility
+
 - Guidelines directly applicable to development work
 - Code examples that compile and run
 - Clear constraints and best practices
 - Specific version and compatibility information
 
 ### 3. Maintainability Focus
+
 - Future-proof recommendations
 - Evolutionary architecture considerations
 - Technical debt identification and mitigation
@@ -351,6 +389,7 @@ This knowledge base serves as the foundation for conducting thorough, profession
 ## Common Enterprise Java Project Structures
 
 ### 1. Traditional Layered Architecture
+
 ```
 src/main/java/
 ├── com.company.project/
@@ -365,6 +404,7 @@ src/main/java/
 ```
 
 ### 2. Domain-Driven Design Structure
+
 ```
 src/main/java/
 ├── com.company.project/
@@ -382,6 +422,7 @@ src/main/java/
 ```
 
 ### 3. Multi-Module Maven Structure
+
 ```
 project-root/
 ├── project-core/          # Domain models and interfaces
@@ -394,18 +435,21 @@ project-root/
 ## Framework Detection Patterns
 
 ### Spring Boot Indicators
+
 - Presence of `@SpringBootApplication`
 - `spring-boot-starter-*` dependencies
 - `application.yml` or `application.properties`
 - `@RestController`, `@Service`, `@Repository` annotations
 
 ### Spring Framework Components
+
 - **Spring MVC**: `@Controller`, `@RequestMapping`, `DispatcherServlet`
 - **Spring Data JPA**: `JpaRepository`, `@Entity`, `@Query`
 - **Spring Security**: `SecurityConfig`, `@PreAuthorize`, `WebSecurityConfigurerAdapter`
 - **Spring Boot Actuator**: `/actuator` endpoints, health checks
 
 ### Persistence Framework Detection
+
 - **MyBatis**: `@Mapper`, XML mapper files, `SqlSessionFactory`
 - **JPA/Hibernate**: `@Entity`, `@Repository`, `persistence.xml`
 - **Spring Data**: Repository interfaces extending `JpaRepository`
@@ -413,6 +457,7 @@ project-root/
 ## Code Convention Analysis Patterns
 
 ### Class Naming Conventions
+
 ```java
 // Controllers
 UserController.java
@@ -443,6 +488,7 @@ UserResponse.java
 ```
 
 ### Method Naming Patterns
+
 ```java
 // CRUD Operations
 findById(Long id)
@@ -466,6 +512,7 @@ shouldProcess()
 ```
 
 ### Package Organization Patterns
+
 ```java
 // Feature-based (DDD approach)
 com.company.project.user.controller
@@ -486,6 +533,7 @@ com.company.project.infrastructure.repository
 ## Configuration Patterns
 
 ### Application Properties Structure
+
 ```yaml
 # Server configuration
 server:
@@ -499,7 +547,7 @@ spring:
     url: jdbc:mysql://localhost:3306/database
     username: ${DB_USERNAME:root}
     password: ${DB_PASSWORD:password}
-  
+
   jpa:
     hibernate:
       ddl-auto: validate
@@ -516,6 +564,7 @@ logging:
 ```
 
 ### Common Configuration Classes
+
 ```java
 @Configuration
 @EnableWebSecurity
@@ -539,16 +588,17 @@ public class ApplicationConfig {
 ## Error Handling Patterns
 
 ### Global Exception Handler
+
 ```java
 @ControllerAdvice
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    
+
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFound(EntityNotFoundException ex) {
         // Handle not found exceptions
     }
-    
+
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {
         // Handle validation exceptions
@@ -557,6 +607,7 @@ public class GlobalExceptionHandler {
 ```
 
 ### Custom Exception Hierarchy
+
 ```java
 // Base exception
 public abstract class BusinessException extends RuntimeException {
@@ -575,16 +626,17 @@ public class UserNotFoundException extends BusinessException {
 ## Testing Patterns
 
 ### Unit Test Structure
+
 ```java
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
-    
+
     @Mock
     private UserRepository userRepository;
-    
+
     @InjectMocks
     private UserServiceImpl userService;
-    
+
     @Test
     @DisplayName("Should find user by id when user exists")
     void shouldFindUserById_WhenUserExists() {
@@ -592,10 +644,10 @@ class UserServiceTest {
         Long userId = 1L;
         User expectedUser = User.builder().id(userId).build();
         when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUser));
-        
+
         // When
         User actualUser = userService.findById(userId);
-        
+
         // Then
         assertThat(actualUser).isEqualTo(expectedUser);
     }
@@ -603,15 +655,16 @@ class UserServiceTest {
 ```
 
 ### Integration Test Patterns
+
 ```java
 @SpringBootTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestPropertySource(locations = "classpath:application-test.properties")
 class UserControllerIntegrationTest {
-    
+
     @Autowired
     private TestRestTemplate restTemplate;
-    
+
     @Test
     void shouldCreateUser_WhenValidRequest() {
         // Integration test implementation
@@ -622,11 +675,12 @@ class UserControllerIntegrationTest {
 ## Performance and Monitoring Patterns
 
 ### Caching Configuration
+
 ```java
 @Configuration
 @EnableCaching
 public class CacheConfig {
-    
+
     @Bean
     public CacheManager cacheManager() {
         RedisCacheManager.Builder builder = RedisCacheManager
@@ -640,12 +694,12 @@ public class CacheConfig {
 // Usage in services
 @Service
 public class UserService {
-    
+
     @Cacheable(value = "users", key = "#id")
     public User findById(Long id) {
         return userRepository.findById(id);
     }
-    
+
     @CacheEvict(value = "users", key = "#user.id")
     public User update(User user) {
         return userRepository.save(user);
@@ -654,16 +708,17 @@ public class UserService {
 ```
 
 ### Logging Patterns
+
 ```java
 // SLF4J with structured logging
 @Slf4j
 @RestController
 public class UserController {
-    
+
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody UserRequest request) {
         log.info("Creating user with email: {}", request.getEmail());
-        
+
         try {
             User user = userService.create(request);
             log.info("User created successfully with id: {}", user.getId());
@@ -679,11 +734,12 @@ public class UserController {
 ## Security Implementation Patterns
 
 ### JWT Configuration
+
 ```java
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -696,22 +752,23 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-        
+
         return http.build();
     }
 }
 ```
 
 ### Method-Level Security
+
 ```java
 @Service
 public class UserService {
-    
+
     @PreAuthorize("hasRole('ADMIN') or #userId == authentication.principal.id")
     public User findById(Long userId) {
         return userRepository.findById(userId);
     }
-    
+
     @PostAuthorize("returnObject.userId == authentication.principal.id")
     public UserProfile getUserProfile(Long userId) {
         return userProfileRepository.findByUserId(userId);
@@ -730,6 +787,7 @@ This document provides common patterns that help identify and understand Java en
 ### Phase 1: Project Discovery (15-20 minutes)
 
 #### 1.1 Build System Analysis
+
 ```bash
 # Maven project indicators
 - pom.xml in root directory
@@ -737,7 +795,7 @@ This document provides common patterns that help identify and understand Java en
 - Parent-child relationships in POMs
 - Dependency management sections
 
-# Gradle project indicators  
+# Gradle project indicators
 - build.gradle or build.gradle.kts
 - settings.gradle for multi-project
 - gradle.properties for configuration
@@ -745,6 +803,7 @@ This document provides common patterns that help identify and understand Java en
 ```
 
 #### 1.2 Project Structure Mapping
+
 ```
 Quick Assessment Checklist:
 □ Single module vs multi-module structure
@@ -755,6 +814,7 @@ Quick Assessment Checklist:
 ```
 
 #### 1.3 Technology Stack Identification
+
 ```java
 // Primary framework detection
 @SpringBootApplication  // Spring Boot
@@ -767,6 +827,7 @@ Quick Assessment Checklist:
 ### Phase 2: Architecture Analysis (20-25 minutes)
 
 #### 2.1 Layer Identification
+
 ```
 Presentation Layer:
 - Controllers (@Controller, @RestController)
@@ -794,6 +855,7 @@ Infrastructure Layer:
 ```
 
 #### 2.2 Dependency Flow Analysis
+
 ```mermaid
 graph TD
     A[Controller] --> B[Service]
@@ -806,6 +868,7 @@ graph TD
 ```
 
 #### 2.3 Design Pattern Recognition
+
 ```java
 // Repository Pattern
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -836,6 +899,7 @@ public class User {
 ### Phase 3: Code Convention Analysis (15-20 minutes)
 
 #### 3.1 Naming Convention Audit
+
 ```java
 // Package naming patterns
 com.company.project.domain.user     // Domain-based
@@ -854,6 +918,7 @@ isActive() vs getActive() vs checkActive()
 ```
 
 #### 3.2 Code Organization Patterns
+
 ```
 File Structure Analysis:
 □ Interface-implementation separation
@@ -873,36 +938,38 @@ Documentation Standards:
 ### Phase 4: Configuration Analysis (10-15 minutes)
 
 #### 4.1 Application Configuration
+
 ```yaml
 # Configuration pattern analysis
 server:
-  port: ${SERVER_PORT:8080}           # Environment variable usage
+  port: ${SERVER_PORT:8080} # Environment variable usage
   servlet:
     context-path: ${CONTEXT_PATH:/api} # Default value patterns
 
 spring:
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:dev} # Profile management
-  
+
   datasource:
-    url: ${DATABASE_URL}              # External configuration
+    url: ${DATABASE_URL} # External configuration
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
 ```
 
 #### 4.2 Bean Configuration Patterns
+
 ```java
 // Configuration class analysis
 @Configuration
 @ConditionalOnProperty(name = "feature.enabled", havingValue = "true")
 public class FeatureConfig {
-    
+
     @Bean
     @Primary
     public ServiceImpl primaryService() {
         return new ServiceImpl();
     }
-    
+
     @Bean
     @Profile("!test")
     public ExternalService externalService() {
@@ -914,6 +981,7 @@ public class FeatureConfig {
 ### Phase 5: Quality Assessment (15-20 minutes)
 
 #### 5.1 Code Quality Metrics
+
 ```java
 // Complexity indicators
 - Method length (aim for < 20 lines)
@@ -931,6 +999,7 @@ public class FeatureConfig {
 ```
 
 #### 5.2 Testing Strategy Analysis
+
 ```java
 // Test coverage assessment
 @SpringBootTest                          // Integration tests
@@ -948,6 +1017,7 @@ src/test/java/
 ### Phase 6: Technology Compatibility Analysis (10 minutes)
 
 #### 6.1 Version Compatibility Matrix
+
 ```xml
 <!-- Java version constraints -->
 <maven.compiler.source>11</maven.compiler.source>
@@ -963,6 +1033,7 @@ src/test/java/
 ```
 
 #### 6.2 Dependency Conflict Detection
+
 ```java
 // Common conflict patterns
 - Spring Boot version vs Spring Framework version
@@ -975,6 +1046,7 @@ src/test/java/
 ## Analysis Output Framework
 
 ### 1. Executive Summary Template
+
 ```markdown
 ## Project Analysis Summary
 
@@ -985,45 +1057,56 @@ src/test/java/
 **Primary Framework**: {{spring-boot}} {{version}}
 
 ### Key Findings
+
 - {{finding-1}}
 - {{finding-2}}
 - {{finding-3}}
 
 ### Recommendations
+
 - {{recommendation-1}}
 - {{recommendation-2}}
 - {{recommendation-3}}
 ```
 
 ### 2. Detailed Analysis Structure
+
 ```markdown
 # Detailed Analysis Report
 
 ## 1. Project Structure
+
 [Multi-module layout, package organization, file structure]
 
 ## 2. Technology Stack
+
 [Framework versions, dependencies, infrastructure components]
 
 ## 3. Architecture Patterns
+
 [Layer identification, design patterns, data flow]
 
 ## 4. Code Conventions
+
 [Naming standards, organization patterns, documentation]
 
 ## 5. Configuration Management
+
 [Property files, environment handling, bean configuration]
 
 ## 6. Quality Assessment
+
 [Code quality metrics, testing strategies, best practices]
 
 ## 7. Development Guidelines
+
 [AI-specific recommendations, code templates, constraints]
 ```
 
 ## Quality Assurance Checklist
 
 ### Analysis Completeness
+
 ```
 □ All major modules identified and analyzed
 □ Technology stack completely documented
@@ -1038,6 +1121,7 @@ src/test/java/
 ```
 
 ### Output Quality Standards
+
 ```
 □ Guidelines are actionable and specific
 □ Code examples are project-appropriate
@@ -1050,6 +1134,7 @@ src/test/java/
 ```
 
 ### Validation Steps
+
 ```
 □ Cross-reference findings across modules
 □ Verify consistency in recommendations
@@ -1065,201 +1150,260 @@ This methodology ensures systematic, thorough, and consistent analysis of Java e
 ==================== END: .bmad-project-analyst/data/analysis-methodology.md ====================
 
 ==================== START: .bmad-project-analyst/data/entry-point-analysis.md ====================
-# Entry Point Analysis Methodology
+# 基于业务入口点的代码分析方法论
 
 ## 概述
 
-基于业务入口点的代码分析方法论，通过从业务入口点（如Controller、Job类、事件处理器等）开始，逐层追踪调用链，深入分析代码风格、架构模式和团队编码习惯。
+基于业务入口点的代码分析是一种深度代码风格和架构模式分析方法。通过从业务逻辑的入口点开始，沿着调用链逐层深入分析，可以全面了解项目的编码风格、架构模式和技术实践。
 
-## 核心理念
+## 分析方法
 
-传统的代码分析往往从文件结构或包结构开始，而基于入口点的分析方法从实际的业务流程入手，能够更准确地理解：
-- 团队的真实编码风格和习惯
-- 实际使用的架构模式
-- 中间件的集成方式
-- 数据流转和处理模式
+### 1. 入口点识别
 
-## 入口点识别
+#### 1.1 Web API 入口点
 
-### 1. Web API 入口点
-- `@RestController` 和 `@Controller` 注解的类
-- `@RequestMapping`、`@GetMapping`、`@PostMapping` 等注解的方法
-- WebSocket 处理器和端点
+- **Controller 类**：REST API 控制器
+- **Handler 类**：请求处理器
+- **Endpoint 类**：端点定义类
+- **Resource 类**：资源控制器
 
-### 2. 后台任务入口点
-- `@Scheduled` 注解的定时任务方法
-- `@Component` 或 `@Service` 中的后台处理逻辑
-- 批处理作业入口点
+#### 1.2 后台任务入口点
 
-### 3. 事件处理入口点
-- `@EventListener` 注解的事件处理方法
-- `@RabbitListener`、`@KafkaListener` 等消息队列监听器
-- `@JmsListener` 等其他消息处理器
+- **Job 类**：定时任务、异步任务
+- **Scheduler 类**：调度器
+- **Worker 类**：工作线程
+- **Processor 类**：消息处理器
 
-### 4. 其他业务入口点
-- 启动时初始化逻辑（`@PostConstruct`、`CommandLineRunner`）
-- 外部系统回调接口
-- 定制化的业务触发点
+#### 1.3 事件处理入口点
 
-## 分析维度
+- **EventHandler 类**：事件处理器
+- **Listener 类**：监听器
+- **Consumer 类**：消息消费者
 
-### 1. 入口点层分析
-- **路由模式**：URL设计规范、RESTful风格
-- **参数处理**：验证方式、转换模式
-- **响应格式**：统一响应结构、错误处理
-- **安全控制**：认证授权模式
+#### 1.4 其他入口点
 
-### 2. 服务层分析
-- **服务组织**：服务类命名和组织方式
-- **业务逻辑**：复杂业务的拆分和组合
-- **事务管理**：事务边界和传播机制
-- **异常处理**：异常捕获和转换模式
+- **Main 类**：应用程序主入口
+- **Configuration 类**：配置类
+- **Filter 类**：过滤器
+- **Interceptor 类**：拦截器
 
-### 3. 数据访问层分析
-- **DAO/Repository模式**：数据访问抽象方式
-- **ORM使用**：实体映射和查询模式
-- **数据库交互**：SQL风格、性能优化
-- **缓存策略**：缓存使用模式和失效策略
+### 2. 分析维度
 
-### 4. 中间件集成分析
-- **消息队列**：生产者消费者模式、消息格式
-- **缓存系统**：缓存键设计、数据结构选择
-- **搜索引擎**：索引设计、查询模式
-- **外部API**：调用方式、错误处理、重试机制
+#### 2.1 入口点层分析
 
-## 调用链追踪
+- **类结构**：类的组织方式、命名规范
+- **方法设计**：方法签名、参数处理、返回值设计
+- **注解使用**：框架注解的使用模式
+- **异常处理**：异常捕获和处理策略
+- **日志记录**：日志记录的位置和格式
+- **参数验证**：输入参数的验证方式
 
-### 1. 完整路径追踪
-从入口点开始，追踪完整的方法调用链：
-```
-Controller -> Service -> Repository -> Database
-           -> Cache
-           -> MessageQueue
-           -> ExternalAPI
-```
+#### 2.2 服务层分析
 
-### 2. 横切关注点识别
-- **日志记录**：日志级别、格式、内容
-- **性能监控**：监控点设置、指标收集
-- **安全检查**：权限验证、数据脱敏
-- **数据验证**：参数校验、业务规则检查
+- **服务接口设计**：接口定义和实现分离
+- **业务逻辑组织**：复杂业务逻辑的拆分方式
+- **事务管理**：事务注解和管理策略
+- **缓存使用**：缓存注解和策略
+- **依赖注入**：服务间依赖的注入方式
 
-### 3. 数据流转分析
-- **数据转换**：DTO/VO转换模式
-- **数据传递**：参数传递方式、数据结构
-- **状态管理**：状态变更和持久化
+#### 2.3 数据访问层分析
 
-## 分析输出
+- **DAO/Repository 设计**：数据访问对象的设计模式
+- **ORM 使用**：对象关系映射的使用方式
+- **SQL 编写**：原生SQL的编写风格
+- **数据库连接**：连接池和数据源配置
+- **查询优化**：查询性能优化策略
 
-### 1. 代码风格报告
-- **命名规范**：类名、方法名、变量名模式
-- **代码组织**：包结构、文件组织方式
-- **注释风格**：JavaDoc使用、行内注释习惯
-- **代码格式**：缩进、换行、空格使用
+#### 2.4 模块依赖分析
 
-### 2. 架构模式报告
-- **分层架构**：层次划分和职责分离
-- **设计模式**：常用设计模式和应用场景
-- **依赖注入**：IoC容器使用模式
-- **模块化设计**：模块划分和依赖关系
+- **模块结构识别**：识别Maven多模块项目的模块划分
+- **依赖关系映射**：分析模块间的依赖关系和引用模式
+- **API模块模式**：识别API-BIZ分离模式（接口与实现分离）
+- **分层模块模式**：识别按技术层次划分的模块结构
+- **功能模块模式**：识别按业务功能划分的模块结构
+- **共享模块模式**：识别公共组件和工具类模块
+- **循环依赖检测**：检测和分析模块间的循环依赖问题
+- **依赖传递分析**：分析依赖的传递性和影响范围
 
-### 3. 技术实践报告
-- **框架使用**：Spring生态组件使用方式
-- **数据库实践**：ORM使用、查询优化
-- **缓存策略**：缓存层次、失效策略
-- **异步处理**：异步任务、消息队列使用
+#### 2.5 中间件集成分析
 
-### 4. 改进建议
-- **代码质量**：重构建议、性能优化点
-- **架构优化**：架构改进方向
-- **技术升级**：技术栈升级建议
-- **最佳实践**：行业最佳实践对比
+- **消息队列**：MQ的使用模式和配置
+- **缓存中间件**：Redis等缓存的使用方式
+- **搜索引擎**：Elasticsearch等搜索引擎集成
+- **外部API**：第三方服务调用方式
+- **文件存储**：文件上传下载处理
+
+### 3. 调用链追踪
+
+#### 3.1 静态分析
+
+- **依赖关系图**：绘制类间依赖关系
+- **调用层次**：分析方法调用的层次结构
+- **数据流向**：追踪数据在各层间的流转
+- **异常传播**：分析异常在调用链中的传播
+
+#### 3.2 模式识别
+
+- **设计模式**：识别使用的设计模式
+- **架构模式**：分析整体架构模式（MVC、分层等）
+- **编码模式**：识别团队特有的编码习惯
+- **命名模式**：分析命名规范和约定
+
+### 4. 分析输出
+
+#### 4.1 代码风格报告
+
+- **命名规范**：类名、方法名、变量名的命名风格
+- **代码组织**：包结构、类结构的组织方式
+- **注释风格**：注释的编写习惯和格式
+- **代码格式**：缩进、换行、空格的使用习惯
+
+#### 4.2 架构模式报告
+
+- **分层架构**：各层的职责划分和交互方式
+- **模块划分**：功能模块的划分原则
+- **接口设计**：接口的设计原则和规范
+- **数据模型**：实体类和DTO的设计模式
+
+#### 4.3 技术实践报告
+
+- **框架使用**：Spring等框架的使用深度和方式
+- **工具集成**：开发工具和中间件的集成方式
+- **性能优化**：性能优化的实践和策略
+- **安全实践**：安全相关的编码实践
+
+#### 4.4 改进建议
+
+- **代码质量**：代码质量改进建议
+- **架构优化**：架构设计优化建议
+- **性能提升**：性能优化建议
+- **最佳实践**：行业最佳实践的应用建议
 
 ## 实施步骤
 
-### 第一步：入口点扫描
-1. 扫描项目中的所有入口点
-2. 按类型分类和优先级排序
-3. 选择代表性的入口点进行分析
+### 步骤1：入口点收集
 
-### 第二步：调用链追踪
-1. 从选定的入口点开始追踪
-2. 记录完整的方法调用路径
-3. 识别关键的业务逻辑和数据处理点
+1. 扫描项目中的Controller类
+2. 识别Job和Scheduler类
+3. 查找EventHandler和Listener类
+4. 收集其他业务入口点
 
-### 第三步：模式提取
+### 步骤2：调用链分析
+
+1. 选择代表性的入口点方法
+2. 追踪方法调用链到DAO层
+3. 记录每一层的代码特征
+4. 识别中间件使用模式
+
+### 步骤3：模式提取
+
 1. 分析多个调用链的共同模式
-2. 提取代码风格和架构特征
-3. 识别团队的编码习惯
+2. 识别项目特有的编码风格
+3. 总结架构设计原则
+4. 提取最佳实践
 
-### 第四步：报告生成
-1. 整理分析结果
-2. 生成结构化报告
-3. 提供改进建议和最佳实践
+### 步骤4：模块依赖分析
+
+1. 解析pom.xml文件，识别模块结构
+2. 分析模块间的依赖关系
+3. 识别模块引用模式和架构风格
+4. 检测循环依赖和设计问题
+5. 评估模块划分的合理性
+
+### 步骤5：报告生成
+
+1. 生成代码风格分析报告
+2. 输出架构模式总结
+3. 生成模块依赖关系报告
+4. 提供改进建议
+5. 生成开发指南模板
 
 ## 分析示例
 
-### 示例：用户注册API分析
+### 示例：用户管理API分析
 
-**入口点**：`UserController.register()`
-
-**调用链追踪**：
 ```
-UserController.register()
-  -> UserService.registerUser()
-    -> UserValidator.validateRegistration()
-    -> UserRepository.findByEmail()
-    -> PasswordEncoder.encode()
-    -> UserRepository.save()
-    -> EmailService.sendWelcomeEmail()
-      -> MessageQueue.send()
+入口点：UserController.createUser()
+↓
+服务层：UserService.createUser()
+↓
+验证层：UserValidator.validate()
+↓
+数据层：UserRepository.save()
+↓
+审计层：AuditService.logUserCreation()
 ```
 
-**模式提取**：
-- 参数验证在Service层进行
-- 使用Repository模式进行数据访问
-- 密码加密使用Spring Security组件
-- 异步邮件发送通过消息队列
-- 统一的异常处理和响应格式
+**分析结果：**
+
+- 使用标准的MVC分层架构
+- 采用依赖注入进行组件解耦
+- 实现了数据验证和审计功能
+- 遵循RESTful API设计原则
+
+### 示例：模块依赖分析
+
+```
+项目结构：
+my-project/
+├── my-project-api/          # API模块（接口定义）
+│   ├── UserService.java     # 服务接口
+│   ├── UserDTO.java         # 数据传输对象
+│   └── UserException.java   # 异常定义
+├── my-project-biz/          # 业务模块（实现逻辑）
+│   ├── UserServiceImpl.java # 服务实现
+│   ├── UserManager.java     # 业务管理器
+│   └── UserValidator.java   # 业务验证
+├── my-project-dao/          # 数据访问模块
+│   ├── UserRepository.java  # 数据访问接口
+│   └── UserEntity.java      # 数据实体
+└── my-project-web/          # Web模块
+    └── UserController.java  # 控制器
+
+依赖关系：
+web → api, biz
+biz → api, dao
+dao → api
+```
+
+**模块依赖分析结果：**
+
+- **API-BIZ分离模式**：接口定义与实现分离，避免循环依赖
+- **分层模块架构**：按技术层次划分模块（web、biz、dao）
+- **依赖方向清晰**：上层依赖下层，无循环依赖
+- **接口统一管理**：所有接口和DTO集中在API模块
+- **实现隔离**：业务实现细节封装在BIZ模块
 
 ## 工具支持
 
-### 1. 静态分析工具
-- AST解析器：分析代码结构和调用关系
-- 注解扫描器：识别Spring注解和业务入口点
-- 依赖分析器：追踪方法调用链
+### 静态分析工具
 
-### 2. 动态分析工具
-- 调用链追踪：运行时调用路径记录
-- 性能分析：方法执行时间和资源使用
-- 日志分析：业务流程和异常模式
+- **AST解析**：抽象语法树分析
+- **依赖分析**：类和方法依赖关系分析
+- **调用图生成**：自动生成调用关系图
+- **模式匹配**：自动识别设计模式
 
-### 3. 报告生成工具
-- 模式识别引擎：自动识别常见模式
-- 可视化工具：调用链图表和架构图
-- 文档生成器：结构化报告输出
+### 可视化工具
+
+- **架构图生成**：自动生成架构图
+- **调用链图**：可视化方法调用链
+- **依赖关系图**：展示模块间依赖关系
+- **代码热力图**：显示代码复杂度分布
 
 ## 最佳实践
 
-### 1. 入口点选择
-- 选择核心业务流程的入口点
-- 覆盖不同类型的业务场景
-- 考虑代码复杂度和代表性
+1. **选择代表性入口点**：选择最能体现业务逻辑的入口点
+2. **深度与广度平衡**：既要深入分析调用链，也要覆盖不同类型的入口点
+3. **模式识别**：重点识别项目特有的编码模式和架构模式
+4. **持续更新**：随着项目演进持续更新分析结果
+5. **团队协作**：结合团队成员的经验进行分析验证
 
-### 2. 分析深度控制
-- 重点关注业务逻辑层
-- 适度追踪基础设施层
-- 避免过度深入第三方库
+## 注意事项
 
-### 3. 模式识别准确性
-- 多个样本验证模式
-- 区分偶然性和规律性
-- 结合团队反馈验证结果
-
-### 4. 报告实用性
-- 提供具体的代码示例
-- 给出可操作的改进建议
-- 关注团队实际需求和痛点
+1. **避免过度分析**：专注于关键的代码风格和架构模式
+2. **考虑历史因素**：理解代码演进的历史背景
+3. **平衡理想与现实**：在理想架构和现实约束间找到平衡
+4. **文档化结果**：将分析结果文档化，便于团队共享和传承
 ==================== END: .bmad-project-analyst/data/entry-point-analysis.md ====================
 
 ==================== START: .bmad-project-analyst/tasks/analyze-java-project.md ====================
@@ -1270,19 +1414,46 @@ This task involves conducting a comprehensive analysis of a Java web project to 
 ## Analysis Framework:
 
 ### 1. **Project Structure Analysis**
+
 - **Root Directory Examination**: Analyze project root structure, build files, and configuration
 - **Module Architecture**: Identify multi-module structure and inter-module dependencies
 - **Package Hierarchy**: Map package organization and naming conventions
 - **Resource Organization**: Examine configuration files, static resources, and documentation
-- **Business Entry Point Identification**: 
+- **Business Entry Point Identification**:
   - Scan for Web API endpoints (Controller classes with @RestController, @Controller)
   - Identify background job entry points (classes with @Component, @Service for scheduled tasks)
   - Locate event handlers (classes with @EventListener, @RabbitListener, @KafkaListener)
   - Find other business entry points (WebSocket handlers, batch job entry points)
   - Assess entry point coverage and representativeness of the codebase
 
-### 2. **Technology Stack Assessment**
-- **Build System Analysis**: 
+### 2. **Module Dependency Analysis**
+
+- **Module Structure Identification**:
+  - Parse parent pom.xml to identify all sub-modules
+  - Analyze module naming conventions and organization patterns
+  - Map module hierarchy and parent-child relationships
+- **Dependency Relationship Mapping**:
+  - Extract inter-module dependencies from pom.xml files
+  - Create dependency graph showing module relationships
+  - Identify dependency direction and transitive dependencies
+- **Module Pattern Recognition**:
+  - **API-BIZ Separation Pattern**: Identify interface modules (API) and implementation modules (BIZ)
+  - **Layered Module Pattern**: Recognize modules organized by technical layers (web, service, dao)
+  - **Feature Module Pattern**: Identify modules organized by business features
+  - **Shared Module Pattern**: Locate common/shared modules (utils, commons, core)
+- **Dependency Analysis**:
+  - Detect circular dependencies between modules
+  - Analyze dependency scope (compile, test, provided, runtime)
+  - Evaluate dependency version consistency across modules
+  - Identify unused or redundant dependencies
+- **Module Coupling Assessment**:
+  - Measure coupling between modules through dependency analysis
+  - Identify tightly coupled modules that might need refactoring
+  - Assess module cohesion and single responsibility adherence
+
+### 3. **Technology Stack Assessment**
+
+- **Build System Analysis**:
   - Maven/Gradle configuration and version management
   - Plugin usage and build lifecycle customization
   - Dependency management and version constraints
@@ -1300,6 +1471,7 @@ This task involves conducting a comprehensive analysis of a Java web project to 
   - Monitoring and logging frameworks
 
 ### 3. **Architecture Pattern Analysis**
+
 - **Layered Architecture**: Identify presentation, business, persistence layers
 - **Separation of Concerns**: Analyze module responsibilities and boundaries
 - **Dependency Injection**: Examine IoC container usage and bean management
@@ -1307,6 +1479,7 @@ This task involves conducting a comprehensive analysis of a Java web project to 
 - **Design Patterns**: Identify common patterns (Factory, Strategy, Observer, etc.)
 
 ### 4. **Code Quality and Standards Evaluation**
+
 - **Naming Conventions**:
   - Class, method, and variable naming patterns
   - Package naming standards
@@ -1321,6 +1494,7 @@ This task involves conducting a comprehensive analysis of a Java web project to 
   - API documentation practices
 
 ### 5. **Enterprise Patterns and Constraints**
+
 - **Module Dependencies**: Map dependency relationships and identify circular dependencies
 - **Version Compatibility**: Check Java version constraints and library compatibility
 - **Security Patterns**: Analyze authentication, authorization, and data protection
@@ -1328,6 +1502,7 @@ This task involves conducting a comprehensive analysis of a Java web project to 
 - **Configuration Management**: Analyze property management and environment-specific configs
 
 ### 6. **Development Standards Assessment**
+
 - **Java Version Constraints**:
   - Identify target Java version and compatibility requirements
   - Check for version-specific syntax usage
@@ -1342,19 +1517,22 @@ This task involves conducting a comprehensive analysis of a Java web project to 
   - Mock usage and test data management
 
 ### 7. **Database Design Analysis**
+
 - **Schema Conventions**: Table naming, field naming, and indexing patterns
 - **Entity Relationships**: Analyze entity mappings and relationship patterns
 - **Data Access Patterns**: Repository/DAO patterns and query strategies
 - **Transaction Management**: Analyze transaction boundaries and isolation levels
 
 ### 8. **Performance and Scalability Patterns**
+
 - **Caching Strategies**: Identify caching layers and invalidation patterns
 - **Connection Management**: Database connection pooling and resource management
 - **Async Processing**: Identify asynchronous processing patterns
 - **Resource Optimization**: Memory usage and performance considerations
 
 ### 9. **Entry Point Based Deep Code Analysis**
-- **Call Chain Tracing**: 
+
+- **Call Chain Tracing**:
   - Trace complete execution paths from entry points to DAO layer
   - Identify service layer interactions and data transformation points
   - Map cross-cutting concerns (logging, validation, security)
@@ -1374,30 +1552,45 @@ This task involves conducting a comprehensive analysis of a Java web project to 
 ## Analysis Checklist:
 
 ### ✅ **Structural Analysis**
+
 - [ ] Project root structure documented
 - [ ] Module dependencies mapped
 - [ ] Package hierarchy analyzed
 - [ ] Configuration files cataloged
 
+### ✅ **Module Dependency Analysis**
+
+- [ ] Module structure and hierarchy documented
+- [ ] Inter-module dependency relationships mapped
+- [ ] Module patterns identified (API-BIZ, layered, feature-based)
+- [ ] Circular dependencies detected and documented
+- [ ] Module coupling assessment completed
+- [ ] Dependency scope analysis performed
+- [ ] Shared modules and common patterns identified
+
 ### ✅ **Technology Assessment**
+
 - [ ] Build system configuration analyzed
 - [ ] Framework versions documented
 - [ ] Database technologies identified
 - [ ] Third-party libraries cataloged
 
 ### ✅ **Architecture Evaluation**
+
 - [ ] Layer separation validated
 - [ ] Design patterns identified
 - [ ] Data flow documented
 - [ ] Dependency injection patterns analyzed
 
 ### ✅ **Code Standards Review**
+
 - [ ] Naming conventions documented
 - [ ] Code organization patterns identified
 - [ ] Documentation standards assessed
 - [ ] Error handling patterns analyzed
 
 ### ✅ **Enterprise Compliance**
+
 - [ ] Version constraints validated
 - [ ] Security patterns documented
 - [ ] Performance considerations noted
@@ -1406,6 +1599,7 @@ This task involves conducting a comprehensive analysis of a Java web project to 
 ## Output Requirements:
 
 Use the comprehensive analysis findings to populate the ai-guideline-template with:
+
 - Detailed project architecture documentation
 - Complete technology stack specifications
 - Comprehensive coding standards and conventions
@@ -1418,6 +1612,14 @@ Use the comprehensive analysis findings to populate the ai-guideline-template wi
   - Code style and architecture pattern summary
   - Middleware integration pattern analysis
   - Team coding habits and best practices extraction
+- **Module Dependency Analysis Report**:
+  - Complete module structure and hierarchy documentation
+  - Inter-module dependency graph and relationship mapping
+  - Module pattern identification (API-BIZ separation, layered architecture, etc.)
+  - Circular dependency detection and impact analysis
+  - Module coupling metrics and refactoring recommendations
+  - Dependency scope analysis and optimization suggestions
+  - Shared module usage patterns and best practices
 ==================== END: .bmad-project-analyst/tasks/analyze-java-project.md ====================
 
 ==================== START: .bmad-project-analyst/templates/ai-guideline-template.yaml ====================
@@ -1431,7 +1633,7 @@ content: |
   > **Generated by BMAD Project Analyst** | *Enterprise Java Project Analysis Report*
 
   ## 📋 Executive Summary
-  
+
   This document provides comprehensive AI development guidelines for **{{project_name}}**, a {{project_type}} built with {{primary_language}}. The analysis covers architecture patterns, technology stack, coding conventions, and development standards to ensure consistent AI-assisted development.
 
   ### Key Metrics
@@ -1452,7 +1654,7 @@ content: |
 
   ### Architecture Pattern
   **{{architecture_pattern}}**
-  
+
   {{architecture_description}}
 
   ### Module Dependencies
@@ -1500,7 +1702,7 @@ content: |
   ```
 
   ### Naming Conventions
-  
+
   #### Classes & Interfaces
   {{class_naming_rules}}
 
@@ -1641,5 +1843,4 @@ content: |
   ---
 
   *This document was automatically generated by the BMAD Project Analyst. For questions or updates, please refer to the project documentation or contact the development team.*
----
 ==================== END: .bmad-project-analyst/templates/ai-guideline-template.yaml ====================

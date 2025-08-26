@@ -1,4 +1,4 @@
 name: bmad-project-analyst
-version: 0.1.0
+version: 0.2.0
 short-title: bmad-project-analyst
-description: "An agent that analyzes Java web projects to identify inconsistent code styles and specifications, then generates a set of AI guidelines to help AI-powered tools produce code that conforms to project norms."
+description: "An agent that analyzes Java web projects to identify inconsistent code styles and specifications, with enhanced module dependency analysis capabilities. Generates comprehensive AI guidelines to help AI-powered tools produce code that conforms to project norms and module architecture patterns."
